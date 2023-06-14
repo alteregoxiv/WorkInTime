@@ -1,0 +1,3 @@
+ALTER TABLE tasks
+ALTER COLUMN total_time TYPE INT
+USING EXTRACT(EPOCH FROM total_time)::INT;

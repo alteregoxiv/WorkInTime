@@ -1,0 +1,2 @@
+ALTER TABLE tasks
+ALTER COLUMN started_at DROP DEFAULT;

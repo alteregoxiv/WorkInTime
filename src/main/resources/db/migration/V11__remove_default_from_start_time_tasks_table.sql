@@ -1,0 +1,2 @@
+ALTER TABLE tasks
+ALTER COLUMN start_time DROP DEFAULT;
