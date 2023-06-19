@@ -19,6 +19,7 @@ import com.example.RegisterLogin.dto.request.RegistrationRequestDTO;
 @RequestMapping("/users")
 public class UserController {
 
+    @Autowired
     private UserServiceImpl userService;
 
     @Autowired

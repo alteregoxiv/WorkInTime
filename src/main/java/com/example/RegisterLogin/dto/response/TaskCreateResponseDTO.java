@@ -9,9 +9,9 @@ import java.sql.Timestamp;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TaskActionResponseDTO {
+public class TaskCreateResponseDTO {
     private long taskId;
     private String taskName;
-    private String actionName;
-    private Timestamp actionInitiatedAt;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 }
