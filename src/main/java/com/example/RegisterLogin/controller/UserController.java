@@ -37,14 +37,9 @@ public class UserController {
             return new ResponseEntity<>(new CommonResponse<>(HttpStatus.BAD_REQUEST.value(), errorMessage, null), HttpStatus.BAD_REQUEST);
         }
 
-        try {
-            User registeredUser = userService.registerUser(registrationRequestDTO);
-            RegistrationResponseDTO registrationResponse = new RegistrationResponseDTO(registeredUser);
-            return new ResponseEntity<>(new CommonResponse<>(HttpStatus.OK.value(), "Successfully created user", registrationResponse), HttpStatus.OK);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(new CommonResponse<>(HttpStatus.UNPROCESSABLE_ENTITY.value(), e.getMessage(), null), HttpStatus.UNPROCESSABLE_ENTITY);
-        }
+        User registeredUser = userService.registerUser(registrationRequestDTO);
+        RegistrationResponseDTO registrationResponse = new RegistrationResponseDTO(registeredUser);
+        return new ResponseEntity<>(new CommonResponse<>(HttpStatus.OK.value(), "Successfully created user", registrationResponse), HttpStatus.OK);
     }
 
     @PostMapping("/login")
@@ -54,12 +49,7 @@ public class UserController {
             return new ResponseEntity<>(new CommonResponse<>(HttpStatus.BAD_REQUEST.value(), errorMessage), HttpStatus.BAD_REQUEST);
         }
 
-        try {
-            String token = userService.logInUser(logInRequestDTO);
-            return new ResponseEntity<>(new CommonResponse<>(HttpStatus.OK.value(), "User login successful", new LoginResponseDTO(token)), HttpStatus.OK);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(new CommonResponse<>(HttpStatus.UNPROCESSABLE_ENTITY.value(), e.getMessage()), HttpStatus.UNPROCESSABLE_ENTITY);
-        }
+        String token = userService.logInUser(logInRequestDTO);
+        return new ResponseEntity<>(new CommonResponse<>(HttpStatus.OK.value(), "User login successful", new LoginResponseDTO(token)), HttpStatus.OK);
     }
 }
