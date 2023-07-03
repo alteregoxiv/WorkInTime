@@ -27,6 +27,17 @@ public class TaskServiceImpl implements TaskService {
 
     public Task createTask(TaskCreateRequestDTO taskCreateRequestDTO) {
         Task newTask = new Task();
+        Product product = productDAO.findBytId(taskCreateRequestDTO.getProductId());
+        Activity activity = activityDAO.findById(taskCreateRequestDTO.getActivityId());
+
+        if(product == null) {
+            throw new NotFoundException("Product does not exist");
+        }
+
+        if(activity == null) {
+            throw new NotFoundException("Activity does not exist");
+        }
+
         newTask.setTaskName(taskCreateRequestDTO.getTaskName());
         newTask.setProductId(taskCreateRequestDTO.getProductId());
         newTask.setActivityId(taskCreateRequestDTO.getActivityId());

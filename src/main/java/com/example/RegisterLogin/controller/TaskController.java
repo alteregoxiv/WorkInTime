@@ -17,9 +17,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Map;
-
 @RestController
 @RequestMapping("/task")
 public class TaskController {
@@ -41,7 +38,7 @@ public class TaskController {
         }
 
         try {
-            authorizationUtil.checkAuthorizationToken();
+            authorizationUtil.checkAuthenticationToken();
 //            roleCheckUtil.checkManager();
 
             Task createdTask = taskService.createTask(taskCreateRequestDTO);
@@ -70,7 +67,7 @@ public class TaskController {
         }
 
         try {
-            authorizationUtil.checkAuthorizationToken();
+            authorizationUtil.checkAuthenticationToken();
             roleCheckUtil.checkUser();
 
             Transaction taskAction = taskService.initiateTaskAction(taskId, Constants.TaskActions.START);
@@ -95,7 +92,7 @@ public class TaskController {
         }
 
         try {
-            authorizationUtil.checkAuthorizationToken();
+            authorizationUtil.checkAuthenticationToken();
             roleCheckUtil.checkUser();
 
             Transaction taskAction = taskService.initiateTaskAction(taskId, Constants.TaskActions.PAUSE);
@@ -120,7 +117,7 @@ public class TaskController {
         }
 
         try {
-            authorizationUtil.checkAuthorizationToken();
+            authorizationUtil.checkAuthenticationToken();
             roleCheckUtil.checkUser();
 
             Transaction taskAction = taskService.initiateTaskAction(taskId, Constants.TaskActions.END);

@@ -13,7 +13,7 @@ public class AuthorizationUtil {
     @Autowired
     JwtTokenUtil jwtTokenUtil;
 
-    public void checkAuthorizationToken() {
+    public void checkAuthenticationToken() {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         String jwtToken = request.getHeader("Authorization");
 

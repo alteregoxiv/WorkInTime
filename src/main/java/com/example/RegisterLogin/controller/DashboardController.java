@@ -2,7 +2,6 @@ package com.example.RegisterLogin.controller;
 
 import com.example.RegisterLogin.dto.response.AssignedTasksResponseDTO;
 import com.example.RegisterLogin.dto.response.PendingTasksResponseDTO;
-import com.example.RegisterLogin.model.Task;
 import com.example.RegisterLogin.model.UserContext;
 import com.example.RegisterLogin.util.AuthorizationUtil;
 import com.example.RegisterLogin.util.CommonResponse;
@@ -46,7 +45,7 @@ public class DashboardController {
         }
 
         try {
-            authorizationUtil.checkAuthorizationToken();
+            authorizationUtil.checkAuthenticationToken();
             roleCheckUtil.checkUser();
 
             List<Long> productIds = filterRequestDTO.getProduct();
@@ -69,7 +68,7 @@ public class DashboardController {
     public ResponseEntity<CommonResponse<AssignedProductsResponseDTO>> assignedProducts() {
 
         try {
-            authorizationUtil.checkAuthorizationToken();
+            authorizationUtil.checkAuthenticationToken();
             roleCheckUtil.checkUser();
 
             List<Map<Long, String>> products = dashboardService.assignedProducts(userContext.getUser());
@@ -84,7 +83,7 @@ public class DashboardController {
     public ResponseEntity<CommonResponse<PendingTasksResponseDTO>> pendingTasks() {
 
         try {
-            authorizationUtil.checkAuthorizationToken();
+            authorizationUtil.checkAuthenticationToken();
             roleCheckUtil.checkUser();
 
             List<Map<Long, String>> tasks = dashboardService.pendingTasks(userContext.getUser());
@@ -99,7 +98,7 @@ public class DashboardController {
     public ResponseEntity<CommonResponse<AssignedTasksResponseDTO>> assignedTasks() {
 
         try {
-            authorizationUtil.checkAuthorizationToken();
+            authorizationUtil.checkAuthenticationToken();
             roleCheckUtil.checkUser();
 
             List<Map<Long, String>> tasks = dashboardService.assignedTasks(userContext.getUser());
